@@ -1,20 +1,23 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import MainApp from "./src/App";
+import React from "react";
 
+import { NavigationContainer } from "@react-navigation/native";
+import Toast from "react-native-toast-message";
+import { PaperProvider } from "react-native-paper";
+
+const queryClient = new QueryClient();
+
+// this is for just opening App.tsx in src
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+    return (
+        <NavigationContainer>
+            <QueryClientProvider client={queryClient}>
+                <PaperProvider>
+                    <MainApp />
+                </PaperProvider>
+                <Toast />
+            </QueryClientProvider>
+        </NavigationContainer>
+    );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
