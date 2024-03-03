@@ -55,124 +55,128 @@ const App = () => {
 
     return (
         <SafeAreaProvider>
-            <Tab.Navigator>
-                <Tab.Screen
-                    name="Home"
-                    options={{
-                        tabBarLabel: "Home",
-                        tabBarIcon: ({ color }) => (
-                            <MaterialCommunityIcons name="home" color={color} size={26} />
-                        )
-                    }}
-                >
-                    {() => (
-                        <View
-                            style={{
-                                flex: 1,
-                                justifyContent: "space-between",
-                                alignItems: "center",
+            {firebaseAuth ? (
+                <Tab.Navigator>
+                    <Tab.Screen
+                        name="Home"
+                        options={{
+                            tabBarLabel: "Home",
+                            tabBarIcon: ({ color }) => (
+                                <MaterialCommunityIcons name="home" color={color} size={26} />
+                            )
+                        }}
+                    >
+                        {() => (
+                            <View
+                                style={{
+                                    flex: 1,
+                                    justifyContent: "space-between",
+                                    alignItems: "center",
 
-                                // Paddings to handle safe area
-                                paddingTop: insets.top,
-                                paddingBottom: insets.bottom,
-                                paddingLeft: insets.left,
-                                paddingRight: insets.right
-                            }}
-                        >
-                            {firebaseAuth ? (
-                                <Notes firebaseAuth={firebaseAuth} />
-                            ) : (
-                                <Login
-                                    firebaseAuth={firebaseAuth}
-                                    setFirebaseAuth={setFirebaseAuth}
-                                />
-                            )}
-                        </View>
-                    )}
-                </Tab.Screen>
-                <Tab.Screen
-                    name="Create"
-                    options={{
-                        tabBarLabel: "Create",
-                        tabBarIcon: ({ color }) => (
-                            <MaterialCommunityIcons name="book-plus" color={color} size={26} />
-                        )
-                    }}
-                >
-                    {() => (
-                        <View
-                            style={{
-                                flex: 1,
-                                justifyContent: "space-between",
-                                alignItems: "center",
+                                    // Paddings to handle safe area
+                                    paddingTop: insets.top,
+                                    paddingBottom: insets.bottom,
+                                    paddingLeft: insets.left,
+                                    paddingRight: insets.right
+                                }}
+                            >
+                                {firebaseAuth ? (
+                                    <Notes firebaseAuth={firebaseAuth} />
+                                ) : (
+                                    <Login
+                                        firebaseAuth={firebaseAuth}
+                                        setFirebaseAuth={setFirebaseAuth}
+                                    />
+                                )}
+                            </View>
+                        )}
+                    </Tab.Screen>
+                    <Tab.Screen
+                        name="Create"
+                        options={{
+                            tabBarLabel: "Create",
+                            tabBarIcon: ({ color }) => (
+                                <MaterialCommunityIcons name="book-plus" color={color} size={26} />
+                            )
+                        }}
+                    >
+                        {() => (
+                            <View
+                                style={{
+                                    flex: 1,
+                                    justifyContent: "space-between",
+                                    alignItems: "center",
 
-                                // Paddings to handle safe area
-                                paddingTop: insets.top,
-                                paddingBottom: insets.bottom,
-                                paddingLeft: insets.left,
-                                paddingRight: insets.right
-                            }}
-                        >
-                            <Button title="Show toast" />
-                        </View>
-                    )}
-                </Tab.Screen>
-                <Tab.Screen
-                    name="Profile"
-                    options={{
-                        tabBarLabel: "Profile",
-                        tabBarIcon: ({ color }) => (
-                            <MaterialCommunityIcons name="account" color={color} size={26} />
-                        )
-                    }}
-                >
-                    {() => (
-                        <View
-                            style={{
-                                flex: 1,
-                                justifyContent: "space-between",
-                                alignItems: "center",
+                                    // Paddings to handle safe area
+                                    paddingTop: insets.top,
+                                    paddingBottom: insets.bottom,
+                                    paddingLeft: insets.left,
+                                    paddingRight: insets.right
+                                }}
+                            >
+                                <Text>Create note (not implemented)</Text>
+                            </View>
+                        )}
+                    </Tab.Screen>
+                    <Tab.Screen
+                        name="Profile"
+                        options={{
+                            tabBarLabel: "Profile",
+                            tabBarIcon: ({ color }) => (
+                                <MaterialCommunityIcons name="account" color={color} size={26} />
+                            )
+                        }}
+                    >
+                        {() => (
+                            <View
+                                style={{
+                                    flex: 1,
+                                    justifyContent: "space-between",
+                                    alignItems: "center",
 
-                                // Paddings to handle safe area
-                                paddingTop: insets.top,
-                                paddingBottom: insets.bottom,
-                                paddingLeft: insets.left,
-                                paddingRight: insets.right
-                            }}
-                        >
-                            <Profile firebaseAuth={firebaseAuth} />
-                        </View>
-                    )}
-                </Tab.Screen>
+                                    // Paddings to handle safe area
+                                    paddingTop: insets.top,
+                                    paddingBottom: insets.bottom,
+                                    paddingLeft: insets.left,
+                                    paddingRight: insets.right
+                                }}
+                            >
+                                <Profile firebaseAuth={firebaseAuth} />
+                            </View>
+                        )}
+                    </Tab.Screen>
 
-                <Tab.Screen
-                    name="Settings"
-                    options={{
-                        tabBarLabel: "Settings",
-                        tabBarIcon: ({ color }) => (
-                            <MaterialCommunityIcons name="cog" color={color} size={26} />
-                        )
-                    }}
-                >
-                    {() => (
-                        <View
-                            style={{
-                                flex: 1,
-                                justifyContent: "space-between",
-                                alignItems: "center",
+                    <Tab.Screen
+                        name="Settings"
+                        options={{
+                            tabBarLabel: "Settings",
+                            tabBarIcon: ({ color }) => (
+                                <MaterialCommunityIcons name="cog" color={color} size={26} />
+                            )
+                        }}
+                    >
+                        {() => (
+                            <View
+                                style={{
+                                    flex: 1,
+                                    justifyContent: "space-between",
+                                    alignItems: "center",
 
-                                // Paddings to handle safe area
-                                paddingTop: insets.top,
-                                paddingBottom: insets.bottom,
-                                paddingLeft: insets.left,
-                                paddingRight: insets.right
-                            }}
-                        >
-                            <Settings setFirebaseAuth={setFirebaseAuth} />
-                        </View>
-                    )}
-                </Tab.Screen>
-            </Tab.Navigator>
+                                    // Paddings to handle safe area
+                                    paddingTop: insets.top,
+                                    paddingBottom: insets.bottom,
+                                    paddingLeft: insets.left,
+                                    paddingRight: insets.right
+                                }}
+                            >
+                                <Settings setFirebaseAuth={setFirebaseAuth} />
+                            </View>
+                        )}
+                    </Tab.Screen>
+                </Tab.Navigator>
+            ) : (
+                <Login firebaseAuth={firebaseAuth} setFirebaseAuth={setFirebaseAuth} />
+            )}
         </SafeAreaProvider>
     );
 };

@@ -13,7 +13,7 @@ const Profile = ({ firebaseAuth }: props) => {
     if (userStatus === "pending" || !user) {
         return <Avatar.Icon size={128} icon="account" />;
     }
-    console.log(user.name);
+
     return (
         <View>
             <Text variant="headlineLarge">Profile</Text>

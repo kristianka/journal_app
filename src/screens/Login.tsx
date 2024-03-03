@@ -1,10 +1,12 @@
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
-import { Button, TextInput, View } from "react-native";
+import { View } from "react-native";
+
 import { auth } from "../firebase";
 import { FireBaseUserInterface } from "../types";
 import { FirebaseError } from "firebase/app";
 import Toast from "react-native-toast-message";
+import { Button, TextInput } from "react-native-paper";
 
 interface props {
     firebaseAuth: FireBaseUserInterface | null;
@@ -75,15 +77,24 @@ const Login = ({ firebaseAuth, setFirebaseAuth }: props) => {
     };
 
     return (
-        <View>
-            <TextInput value={email} onChangeText={setEmail} placeholder="Email" />
+        <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
             <TextInput
+                style={{ width: "90%", borderRadius: 10 }}
+                value={email}
+                onChangeText={setEmail}
+                placeholder="Email"
+            />
+            <TextInput
+                style={{ width: "90%", borderRadius: 10 }}
                 value={password}
                 onChangeText={setPassword}
                 placeholder="Password"
                 secureTextEntry
             />
-            <Button onPress={handleLogin} title="Login" />
+            <Button style={{ width: "90%" }} mode="contained" onPress={handleLogin}>
+                {" "}
+                Login{" "}
+            </Button>
         </View>
     );
 };
